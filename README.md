@@ -19,7 +19,7 @@ Help files can be found by typing `?<functionname>`, or `??blandaltman`.
 ## Usage
 
 ### Power and sample size
-We estimate the power curve by evaluating the power at many different sample sizes. This is done by `estimatePowerCurve`, which produces an object which several other functions in this package are defined to process.
+We estimate the power curve by evaluating the power at many different sample sizes. This is done by `estimatePowerCurve`, which produces an object that several other functions in this package are defined to process.
 
 ```
 powerCurve <- estimatePowerCurve(nMin = 10, 
