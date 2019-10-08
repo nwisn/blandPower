@@ -10,6 +10,7 @@ This package can be installed from GitHub using the `devtools` package.
 ```
 library(devtools)
 install_github("nwisn/blandaltman")
+library(blandaltman)
 ```
 
 ## Help
