@@ -31,5 +31,8 @@ plotConfidenceIntervalCurve <- function(powerCurve){
     ggplot2::geom_line() +
     ggplot2::geom_hline(yintercept = c(-plotdf$beta.delta, plotdf$beta.delta), lty = 2) +
     ggplot2::xlab("sample size") +
+    ggplot2::ylab("value") +
+    ggplot2::labs(color = "") +
+    ggplot2::ggtitle("Confidence intervals") +
     ggplot2::theme_bw()
 }

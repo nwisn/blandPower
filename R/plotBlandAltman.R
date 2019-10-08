@@ -24,6 +24,8 @@ plotBlandAltman <- function(x, y, gamma = 0.05, alpha = 0.05, sigfigs = 2){
   df %>%
     ggplot2::ggplot() +
     ggplot2::aes(x = df$mean, y = df$difference) +
+    ggplot2::xlab("mean") +
+    ggplot2::ylab("difference") +
     ggplot2::geom_point() +
 
     # zero

@@ -9,5 +9,6 @@ plotPowerCurve <- function(powerCurve){
     ggplot2::geom_line() +
     ggplot2::xlab("sample size") +
     ggplot2::ylab("power") +
-    ggplot2::ggtitle("Power curve")
+    ggplot2::ggtitle("Power curve") +
+    ggplot2::theme_bw()
 }
