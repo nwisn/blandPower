@@ -12,12 +12,17 @@ estimateConfidenceIntervals <- function(LOA, n, alpha = 0.05){
   upperLOA <- LOA$upperLOA
   zgamma <- LOA$zgamma
   SD <- LOA$SD
+  mu <- LOA$mu
 
   # compute standard error on LOA
   se = SD * sqrt( (1/n) + (zgamma^2)/(2*(n - 1)) )
 
   # compute quantiles of t-distribution
   talpha = qt(1 - alpha/2, df = n - 1, lower.tail = TRUE)
+
+  # compute CI of mean
+  mu_upperCI <- mu + talpha * SD * sqrt(1/n)
+  mu_lowerCI <- mu - talpha * SD * sqrt(1/n)
 
   # CI on lower LOA (Lu eq 1)
   lowerLOA_upperCI = lowerLOA + talpha * se
@@ -32,6 +37,8 @@ estimateConfidenceIntervals <- function(LOA, n, alpha = 0.05){
     se = se,
     alpha = alpha,
     talpha = talpha,
+    mu_upperCI = mu_upperCI,
+    mu_lowerCI = mu_lowerCI,
     lowerLOA_upperCI = lowerLOA_upperCI,
     lowerLOA_lowerCI = lowerLOA_lowerCI,
     upperLOA_lowerCI = upperLOA_lowerCI,
@@ -44,3 +51,4 @@ estimateConfidenceIntervals <- function(LOA, n, alpha = 0.05){
   return(joined)
 
 }
+
