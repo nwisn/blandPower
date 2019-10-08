@@ -5,5 +5,6 @@
 #' @return a list
 #' @export
 estimateSampleSize <- function(powerCurve, power = 0.8){
+  if(!class(powerCurve)=="powerCurve") warning("input is not a powerCurve object")
   powerCurve$CI.n[which.min(abs(powerCurve$power.power - power))]
 }

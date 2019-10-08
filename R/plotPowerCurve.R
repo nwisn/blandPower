@@ -4,6 +4,7 @@
 #' @return a ggplot2 object
 #' @export
 plotPowerCurve <- function(powerCurve){
+  if(!class(powerCurve)=="powerCurve") warning("input is not a powerCurve object")
   ggplot2::ggplot(powerCurve) +
     ggplot2::aes(x = powerCurve$CI.n, y = powerCurve$power.power) +
     ggplot2::geom_line() +

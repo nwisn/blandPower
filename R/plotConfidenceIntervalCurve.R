@@ -7,6 +7,7 @@
 #' @importFrom magrittr "%>%"
 #' @export
 plotConfidenceIntervalCurve <- function(powerCurve){
+  if(!class(powerCurve)=="powerCurve") warning("input is not a powerCurve object")
   features <- c("LOA.mu",
                 "LOA.upperLOA",
                 "LOA.lowerLOA",
