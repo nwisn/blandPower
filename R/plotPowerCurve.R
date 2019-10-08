@@ -2,6 +2,7 @@
 #'
 #' @param powerCurve an object produced by estimatePowerCurve
 #' @return a ggplot2 object
+#' @export
 plotPowerCurve <- function(powerCurve,...){
   library(ggplot2)
   ggplot(powerCurve) +

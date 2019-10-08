@@ -7,6 +7,7 @@
 #' @param alpha alpha level for calculating limits of agreement confidence intervals
 #' @param sigfigs number of significant digits to display
 #' @return a ggplot2 object
+#' @export
 plotBlandAltman <- function(x, y, gamma = 0.05, alpha = 0.05, sigfigs = 2){
   means <- (x + y)/2
   differences <- (x - y)

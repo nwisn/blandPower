@@ -4,6 +4,7 @@
 #'
 #' @param powerCurve an object produced by estimatePowerCurve
 #' @return a ggplot2 object
+#' @export
 plotConfidenceIntervalCurve <- function(powerCurve){
   require(tidyverse)
   require(stringr)
