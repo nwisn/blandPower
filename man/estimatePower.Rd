@@ -4,12 +4,12 @@
 \alias{estimatePower}
 \title{Estimate power for Bland-Altman limits of agreement test}
 \usage{
-estimatePower(beta, method = "Lu")
+estimatePower(powerCurve, n)
 }
 \arguments{
-\item{beta}{an object produced by estimateTypeIIerror}
+\item{powerCurve}{an object produced by estimatePowerCurve}
 
-\item{method}{whether to use the Lu or Wisniewski method for power}
+\item{power}{the pre-determined power}
 }
 \value{
 a list

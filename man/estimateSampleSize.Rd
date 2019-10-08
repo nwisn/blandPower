@@ -4,12 +4,14 @@
 \alias{estimateSampleSize}
 \title{Estimate sample size for Bland-Altman limits of agreement test}
 \usage{
-estimateSampleSize(powerCurve, power = 0.8)
+estimateSampleSize(powerCurve, power = 0.8, tolerance = 0.01)
 }
 \arguments{
 \item{powerCurve}{an object produced by estimatePowerCurve}
 
 \item{power}{the pre-determined power}
+
+\item{tolerance}{how close the nearest estimated power must be to the pre-determined power}
 }
 \value{
 a list

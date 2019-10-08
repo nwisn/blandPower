@@ -30,7 +30,7 @@ estimatePowerCurve <- function(nMin = 10,
     LOA %>%
       estimateConfidenceIntervals(n = this_n, alpha = alpha) %>%
       estimateTypeIIerror(delta = delta, approx = approx) %>%
-      estimatePower(method = method) %>%
+      estimatePowerFromBeta(method = method) %>%
       unlist(recursive = FALSE) %>%
       as.data.frame()
   })
