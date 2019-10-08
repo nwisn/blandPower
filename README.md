@@ -41,7 +41,13 @@ We estimate sample size by finding the nearest point on the power curve to a pre
 estimateSampleSize(powerCurve, power = 0.8)
 ```
 
-We can plot the power curve, and alternatively a plot of the limits of agreement and how their confidence intervals change with increasing sample size. All plots produced by this package use `ggplot2`.
+We estimate power by finding the nearest point on the power curve to a pre-specified sample size.
+
+```
+estimatePower(powerCurve, n = 100)
+```
+
+We plot the power curve, and alternatively a plot of the limits of agreement and how their confidence intervals change with increasing sample size. All plots produced by this package use `ggplot2`.
 
 ```
 plotPowerCurve(powerCurve)
