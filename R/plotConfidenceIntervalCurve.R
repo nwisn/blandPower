@@ -7,7 +7,7 @@
 #' @importFrom magrittr "%>%"
 #' @export
 plotConfidenceIntervalCurve <- function(powerCurve){
-  if(!class(powerCurve)=="powerCurve") warning("input is not a powerCurve object")
+  if(!"powerCurve" %in% class(powerCurve)) warning("input is not a powerCurve object")
   features <- c("LOA.mu",
                 "LOA.upperLOA",
                 "LOA.lowerLOA",
@@ -16,6 +16,7 @@ plotConfidenceIntervalCurve <- function(powerCurve){
                 "CI.upperLOA_lowerCI",
                 "CI.upperLOA_upperCI")
 
+  class(powerCurve) <- "data.frame"
   plotdf <- powerCurve %>%
     dplyr::select(c("CI.n", "beta.delta", features)) %>%
     tidyr::pivot_longer(cols = features)

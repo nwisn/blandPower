@@ -35,6 +35,6 @@ estimatePowerCurve <- function(nMin = 10,
       as.data.frame()
   })
   result <- do.call(rbind, df)
-  class(result) <- "powerCurve"
+  class(result) <- list("data.frame", "powerCurve")
   return(result)
 }
