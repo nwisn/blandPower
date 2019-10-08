@@ -12,8 +12,6 @@ estimateLimitsOfAgreement(mu, SD, gamma = 0.05)
 \item{SD}{standard deviation of the pairwise differences}
 
 \item{gamma}{alpha level for calculating limits of agreement}
-
-\item{n}{number of samples}
 }
 \value{
 a list

@@ -4,7 +4,7 @@
 \alias{plotPowerCurve}
 \title{Plot sample size vs power for Bland-Altman limits of agreement test}
 \usage{
-plotPowerCurve(powerCurve, ...)
+plotPowerCurve(powerCurve)
 }
 \arguments{
 \item{powerCurve}{an object produced by estimatePowerCurve}

@@ -9,7 +9,10 @@ Description: Estimation of limits of agreement, confidence intervals, and statis
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Depends:
-    tidyverse,
+Imports:
+    magrittr,
+    ggplot2,
+    dplyr,
+    tidyr,
     stringr
 RoxygenNote: 6.1.1

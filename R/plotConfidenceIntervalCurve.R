@@ -4,10 +4,9 @@
 #'
 #' @param powerCurve an object produced by estimatePowerCurve
 #' @return a ggplot2 object
+#' @importFrom magrittr "%>%"
 #' @export
 plotConfidenceIntervalCurve <- function(powerCurve){
-  require(tidyverse)
-  require(stringr)
   features <- c("LOA.mu",
                 "LOA.upperLOA",
                 "LOA.lowerLOA",
@@ -17,15 +16,20 @@ plotConfidenceIntervalCurve <- function(powerCurve){
                 "CI.upperLOA_upperCI")
 
   plotdf <- powerCurve %>%
-    select(c(CI.n, beta.delta, features)) %>%
-    pivot_longer(cols = features) %>%
-    mutate(feature = sapply(str_split(name, "[.]"), function(x) x[1]))
+    dplyr::select(c("CI.n", "beta.delta", features)) %>%
+    tidyr::pivot_longer(cols = features)
+
+  plotdf <- plotdf %>%
+    dplyr::mutate(feature = sapply(stringr::str_split(plotdf$name, "[.]"), function(x) x[1]))
 
   plotdf %>%
-    ggplot() +
-    aes(x = CI.n, y = value, color = feature, group = name) +
-    geom_line() +
-    geom_hline(yintercept = c(-plotdf$beta.delta, plotdf$beta.delta), lty = 2) +
-    xlab("sample size") +
-    theme_bw()
+    ggplot2::ggplot() +
+    ggplot2::aes(x = plotdf$CI.n,
+                 y = plotdf$value,
+                 color = plotdf$feature,
+                 group = plotdf$name) +
+    ggplot2::geom_line() +
+    ggplot2::geom_hline(yintercept = c(-plotdf$beta.delta, plotdf$beta.delta), lty = 2) +
+    ggplot2::xlab("sample size") +
+    ggplot2::theme_bw()
 }

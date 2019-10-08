@@ -2,6 +2,7 @@
 #' Estimate confidence intervals for Bland-Altman limits of agreement
 #'
 #' @param LOA an object created by estimateLimitsOfAgreement
+#' @param n sample size
 #' @param alpha alpha level for calculating limits of agreement
 #' @return a blandaltman object
 estimateConfidenceIntervals <- function(LOA, n, alpha = 0.05){
@@ -18,7 +19,7 @@ estimateConfidenceIntervals <- function(LOA, n, alpha = 0.05){
   se = SD * sqrt( (1/n) + (zgamma^2)/(2*(n - 1)) )
 
   # compute quantiles of t-distribution
-  talpha = qt(1 - alpha/2, df = n - 1, lower.tail = TRUE)
+  talpha = stats::qt(1 - alpha/2, df = n - 1, lower.tail = TRUE)
 
   # compute CI of mean
   mu_upperCI <- mu + talpha * SD * sqrt(1/n)

@@ -8,8 +8,8 @@ estimatePower <- function(beta, method = "Lu"){
 
   # get from beta object
   if(!"beta" %in% class(beta)) stop("input beta must include a beta object produced by estimateTypeIIerror")
-  if(!"CI" %in% class(beta)) stop("input beta must include a CI object produced by estimateConfidenceIntervals")
-  if(!"LOA" %in% class(beta)) stop("input beta must include a LOA object produced by estimateLimitsOfAgreement")
+  if(!"CI"   %in% class(beta)) stop("input beta must include a CI object produced by estimateConfidenceIntervals")
+  if(!"LOA"  %in% class(beta)) stop("input beta must include a LOA object produced by estimateLimitsOfAgreement")
   beta1 = beta$beta$beta1
   beta2 = beta$beta$beta2
 

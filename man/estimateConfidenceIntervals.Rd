@@ -9,6 +9,8 @@ estimateConfidenceIntervals(LOA, n, alpha = 0.05)
 \arguments{
 \item{LOA}{an object created by estimateLimitsOfAgreement}
 
+\item{n}{sample size}
+
 \item{alpha}{alpha level for calculating limits of agreement}
 }
 \value{

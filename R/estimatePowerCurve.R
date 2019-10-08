@@ -12,6 +12,7 @@
 #' @param approx normal or t distribution
 #' @param method whether to use the Lu or Wisniewski method for power
 #' @return a dataframe
+#' @importFrom magrittr "%>%"
 #' @export
 estimatePowerCurve <- function(nMin = 10,
                                nMax = 100,

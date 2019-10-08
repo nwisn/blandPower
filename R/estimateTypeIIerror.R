@@ -23,15 +23,15 @@ estimateTypeIIerror <- function(CI, delta, approx = "t"){
 
   # estimate type-II error beta using Gaussian distribution
   if(approx == "normal"){
-    beta1 = pnorm(( upperLOA - delta)/se - qnorm(alpha/2, lower.tail = T))
-    beta2 = pnorm((-lowerLOA - delta)/se - qnorm(alpha/2, lower.tail = T))
+    beta1 = stats::pnorm(( upperLOA - delta)/se - stats::qnorm(alpha/2, lower.tail = T))
+    beta2 = stats::pnorm((-lowerLOA - delta)/se - stats::qnorm(alpha/2, lower.tail = T))
   }
   # estimate type-II error using non-central t-distribution
   if(approx == "t"){
     tau1 = (delta - mu - zgamma * SD)/se # non-centrality parameter
     tau2 = (delta + mu - zgamma * SD)/se # non-centrality parameter
-    beta1 = 1 - pt(talpha, df = n - 1, ncp = tau1, lower.tail = FALSE) # Lu eq 3
-    beta2 = 1 - pt(talpha, df = n - 1, ncp = tau2, lower.tail = FALSE) # Lu eq 4
+    beta1 = 1 - stats::pt(talpha, df = n - 1, ncp = tau1, lower.tail = FALSE) # Lu eq 3
+    beta2 = 1 - stats::pt(talpha, df = n - 1, ncp = tau2, lower.tail = FALSE) # Lu eq 4
   }
 
   result <- list(
