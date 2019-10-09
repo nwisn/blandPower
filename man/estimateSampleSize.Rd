@@ -4,14 +4,30 @@
 \alias{estimateSampleSize}
 \title{Estimate sample size for Bland-Altman limits of agreement test}
 \usage{
-estimateSampleSize(powerCurve, power = 0.8, tolerance = 0.01)
+estimateSampleSize(mu, SD, delta, power = 0.8, gamma = 0.05,
+  alpha = 0.05, iterMax = 100, tolerance = 0.001, approx = "t",
+  method = "Lu", debug = FALSE)
 }
 \arguments{
-\item{powerCurve}{an object produced by estimatePowerCurve}
+\item{mu}{mean of differences}
+
+\item{SD}{standard deviation of differences}
+
+\item{delta}{pre-determined clinical agreement interval}
 
 \item{power}{the pre-determined power}
 
-\item{tolerance}{how close the nearest estimated power must be to the pre-determined power}
+\item{gamma}{alpha level of Bland-Altman LOA}
+
+\item{alpha}{alpha level of LOA confidence intervals}
+
+\item{iterMax}{maximum number of iterations}
+
+\item{tolerance}{tolerance for how close the power estimate should be to the input}
+
+\item{approx}{normal or t distribution}
+
+\item{method}{whether to use the Lu or Wisniewski method for power}
 }
 \value{
 a list
