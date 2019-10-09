@@ -28,6 +28,8 @@ estimateSampleSize(mu, SD, delta, power = 0.8, gamma = 0.05,
 \item{approx}{normal or t distribution}
 
 \item{method}{whether to use the Lu or Wisniewski method for power}
+
+\item{debug}{logical}
 }
 \value{
 a list

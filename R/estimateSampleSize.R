@@ -8,6 +8,7 @@
 #' @param iterMax maximum number of iterations
 #' @param tolerance tolerance for how close the power estimate should be to the input
 #' @param method whether to use the Lu or Wisniewski method for power
+#' @param debug logical
 #' @return a sample size
 estimateSampleSize_mu0 <- function(SD, delta, power = 0.8, gamma = 0.05, alpha = 0.05, iterMax = 100, tolerance = 0.001, method = "Lu", debug = FALSE){
   zgamma = stats::qnorm(1 - gamma/2, lower.tail = TRUE)
@@ -61,6 +62,7 @@ estimateSampleSize_mu0 <- function(SD, delta, power = 0.8, gamma = 0.05, alpha =
 #' @param tolerance tolerance for how close the power estimate should be to the input
 #' @param approx normal or t distribution
 #' @param method whether to use the Lu or Wisniewski method for power
+#' @param debug logical
 #' @return a list
 #' @export
 estimateSampleSize <- function(mu, SD, delta, power = 0.8, gamma = 0.05, alpha = 0.05, iterMax = 100, tolerance = 0.001, approx = "t", method = "Lu", debug = FALSE){
