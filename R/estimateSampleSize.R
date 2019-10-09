@@ -49,12 +49,6 @@ estimateSampleSize_mu0 <- function(SD, delta, power = 0.8, gamma = 0.05, alpha =
 
 
 
-
-
-
-
-
-
 #' Estimate sample size for Bland-Altman limits of agreement test
 #'
 #' @param mu mean of differences
