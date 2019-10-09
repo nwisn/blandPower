@@ -11,6 +11,8 @@
 #' @param alpha alpha level of LOA confidence intervals
 #' @param approx normal or t distribution
 #' @param method whether to use the Lu or Wisniewski method for power
+#' @param parallel logical
+#' @param ncores number of cores for parallel computation
 #' @return a dataframe
 #' @importFrom magrittr "%>%"
 #' @export
@@ -23,17 +25,32 @@ estimatePowerCurve <- function(nMin = 10,
                                gamma = 0.05,
                                alpha = 0.05,
                                approx = "t",
-                               method = "Lu"){
+                               method = "Lu",
+                               parallel = TRUE,
+                               ncores = NULL){
   samplesizes <- seq(nMin, nMax, by = stepsize)
   LOA <- estimateLimitsOfAgreement(mu = mu, SD = SD, gamma = gamma)
-  df <- lapply(samplesizes, function(this_n){
-    LOA %>%
-      estimateConfidenceIntervals(n = this_n, alpha = alpha) %>%
-      estimateTypeIIerror(delta = delta, approx = approx) %>%
-      estimatePowerFromBeta(method = method) %>%
-      unlist(recursive = FALSE) %>%
-      as.data.frame()
-  })
+  if(!parallel){
+    df <- lapply(samplesizes, function(this_n){
+      LOA %>%
+        estimateConfidenceIntervals(n = this_n, alpha = alpha) %>%
+        estimateTypeIIerror(delta = delta, approx = approx) %>%
+        estimatePowerFromBeta(method = method) %>%
+        unlist(recursive = FALSE) %>%
+        as.data.frame()
+    })
+  } else {
+    if(is.null(ncores)) ncores <- parallel::detectCores() - 1
+    df <- parallel::mclapply(samplesizes, function(this_n){
+      LOA %>%
+        estimateConfidenceIntervals(n = this_n, alpha = alpha) %>%
+        estimateTypeIIerror(delta = delta, approx = approx) %>%
+        estimatePowerFromBeta(method = method) %>%
+        unlist(recursive = FALSE) %>%
+        as.data.frame()
+    }, mc.cores = ncores)
+  }
+
   result <- do.call(rbind, df)
   class(result) <- list("data.frame", "powerCurve")
   return(result)

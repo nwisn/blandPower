@@ -5,7 +5,8 @@
 \title{Estimate power curve for Bland-Altman limits of agreement test}
 \usage{
 estimatePowerCurve(nMin = 10, nMax = 100, stepsize = 1, mu, SD,
-  delta, gamma = 0.05, alpha = 0.05, approx = "t", method = "Lu")
+  delta, gamma = 0.05, alpha = 0.05, approx = "t", method = "Lu",
+  parallel = TRUE, ncores = NULL)
 }
 \arguments{
 \item{nMin}{minimum sample size}
@@ -27,6 +28,10 @@ estimatePowerCurve(nMin = 10, nMax = 100, stepsize = 1, mu, SD,
 \item{approx}{normal or t distribution}
 
 \item{method}{whether to use the Lu or Wisniewski method for power}
+
+\item{parallel}{logical}
+
+\item{ncores}{number of cores for parallel computation}
 }
 \value{
 a dataframe

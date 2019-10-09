@@ -63,9 +63,11 @@ estimateSampleSize_mu0 <- function(SD, delta, power = 0.8, gamma = 0.05, alpha =
 #' @param approx normal or t distribution
 #' @param method whether to use the Lu or Wisniewski method for power
 #' @param debug logical
+#' @param parallel logical
+#' @param ncores number of cores to use for parallel computation
 #' @return a list
 #' @export
-estimateSampleSize <- function(mu, SD, delta, power = 0.8, gamma = 0.05, alpha = 0.05, iterMax = 100, tolerance = 0.001, approx = "t", method = "Lu", debug = FALSE){
+estimateSampleSize <- function(mu, SD, delta, power = 0.8, gamma = 0.05, alpha = 0.05, iterMax = 100, tolerance = 0.001, approx = "t", method = "Lu", debug = FALSE, parallel = TRUE, ncores = NULL){
   print(method)
   n1 <- floor(estimateSampleSize_mu0(SD, delta, power = power, gamma = gamma, alpha = alpha, iterMax = iterMax, tolerance = tolerance, method = method))
   this_power <- 0
@@ -73,7 +75,7 @@ estimateSampleSize <- function(mu, SD, delta, power = 0.8, gamma = 0.05, alpha =
   iter <- 1
   while(this_power < power){
     n <- n + 1
-    this_powerCurve <- estimatePowerCurve(nMin = n, nMax = n, stepsize = 1, mu, SD, delta, gamma, alpha, approx, method)
+    this_powerCurve <- estimatePowerCurve(nMin = n, nMax = n, stepsize = 1, mu = mu, SD = SD, delta = delta, gamma = gamma, alpha = alpha, approx = approx, method = method, parallel = parallel, ncores = ncores)
     this_power <- estimatePowerFromPowerCurve(this_powerCurve, n)
 
     iter <- iter + 1

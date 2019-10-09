@@ -6,7 +6,7 @@
 \usage{
 estimateSampleSize(mu, SD, delta, power = 0.8, gamma = 0.05,
   alpha = 0.05, iterMax = 100, tolerance = 0.001, approx = "t",
-  method = "Lu", debug = FALSE)
+  method = "Lu", debug = FALSE, parallel = TRUE, ncores = NULL)
 }
 \arguments{
 \item{mu}{mean of differences}
@@ -30,6 +30,10 @@ estimateSampleSize(mu, SD, delta, power = 0.8, gamma = 0.05,
 \item{method}{whether to use the Lu or Wisniewski method for power}
 
 \item{debug}{logical}
+
+\item{parallel}{logical}
+
+\item{ncores}{number of cores to use for parallel computation}
 }
 \value{
 a list
