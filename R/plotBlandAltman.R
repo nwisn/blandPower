@@ -9,21 +9,23 @@
 #' @return a ggplot2 object
 #' @importFrom magrittr "%>%"
 #' @export
+#' @examples 
+#'   plotBlandAltman(1:20, rnorm(20))
 plotBlandAltman <- function(x, y, gamma = 0.05, alpha = 0.05, sigfigs = 2){
-  means <- (x + y)/2
-  differences <- (x - y)
-
-  n = length(x)
-  mu <- mean(differences)
-  SD <- stats::sd(differences)
+  
+  df <- data.frame(mean = (x+y)/2, difference = (x - y)) %>%
+    na.omit
+  
+  n  <- nrow(df)
+  mu <- mean(df$difference)
+  SD <- stats::sd(df$difference)
 
   CI <- estimateLimitsOfAgreement(mu = mu, SD = SD, gamma = gamma) %>%
     estimateConfidenceIntervals(n = n, alpha = alpha)
 
-  df <- data.frame(mean = means, difference = differences)
   df %>%
     ggplot2::ggplot() +
-    ggplot2::aes(x = df$mean, y = df$difference) +
+    ggplot2::aes(x = mean, y = difference) +
     ggplot2::xlab("mean") +
     ggplot2::ylab("difference") +
     ggplot2::geom_point() +
