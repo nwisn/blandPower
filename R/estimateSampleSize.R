@@ -68,7 +68,6 @@ estimateSampleSize_mu0 <- function(SD, delta, power = 0.8, gamma = 0.05, alpha =
 #' @return a list
 #' @export
 estimateSampleSize <- function(mu, SD, delta, power = 0.8, gamma = 0.05, alpha = 0.05, iterMax = 100, tolerance = 0.001, approx = "t", method = "Lu", debug = FALSE, parallel = TRUE, ncores = NULL){
-  print(method)
   n1 <- floor(estimateSampleSize_mu0(SD, delta, power = power, gamma = gamma, alpha = alpha, iterMax = iterMax, tolerance = tolerance, method = method))
   this_power <- 0
   n <- n1 - 1
