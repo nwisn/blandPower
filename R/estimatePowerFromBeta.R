@@ -14,7 +14,7 @@ estimatePowerFromBeta <- function(beta, method = "Lu"){
   beta2 = beta$beta$beta2
 
   if(method == "Lu")          power = 1 - (beta1 + beta2) # Lu eq 5
-  if(method == "Wisniewski")  power = (1 - beta1) * (1 - beta2)
+  if(method == "second-order")  power = (1 - beta1) * (1 - beta2)
 
   result <- list(
     power = power,
