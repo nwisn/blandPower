@@ -1,6 +1,8 @@
 # blandPower
 Tools for estimation of power and sample size in Bland-Altman analysis
 
+[![Travis-CI Build Status](https://travis-ci.org/nwisn/blandaltman.svg?branch=master)](https://travis-ci.org/nwisn/blandaltman)
+
 ## Introduction
 
 Whenever a new measurement technique is developed, it must be compared to an established technique in order to assess agreement, repeatability, or replicability. The most popular way to assess agreement in biomedical applications is the [Bland-Altman method](https://www.ncbi.nlm.nih.gov/pubmed/2868172), which was first proposed in response to widespread misuse of methods like comparison of means, correlation, and ordinary least-squares regression. What is desired most in a good comparison method is a simple way to quantify agreement when both measurements have error, and a simple way to identify constant and non-constant bias over the range of measurements. Bland-Altman analysis offers an intuitive approach to both these goals.
