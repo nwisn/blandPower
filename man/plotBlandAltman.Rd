@@ -23,3 +23,6 @@ a ggplot2 object
 \description{
 Bland-Altman plot
 }
+\examples{
+  plotBlandAltman(1:20, rnorm(20))
+}
